@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0f1117;
+  --foreground: #e4e4e7;
+  --card: #1a1b23;
+  --card-hover: #22232e;
+  --border: #2a2b36;
+  --primary: #6366f1;
+  --primary-hover: #818cf8;
+  --accent: #22d3ee;
+  --danger: #ef4444;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --muted: #71717a;
+  --sidebar-bg: #13141b;
+  --sidebar-width: 320px;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-muted: var(--muted);
+  --color-sidebar-bg: var(--sidebar-bg);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Leaflet overrides for dark theme */
+.leaflet-container {
+  background: #1a1b23;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #1a1b23;
+  color: #e4e4e7;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-tip {
+  background: #1a1b23;
+}
+
+.leaflet-popup-content {
+  margin: 12px 16px;
+}
+
+.leaflet-popup-close-button {
+  color: #71717a !important;
+}
+
+.leaflet-popup-close-button:hover {
+  color: #e4e4e7 !important;
+}
+
+.leaflet-control-zoom a {
+  background: #1a1b23 !important;
+  color: #e4e4e7 !important;
+  border-color: #2a2b36 !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #22232e !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(15, 17, 23, 0.8) !important;
+  color: #71717a !important;
+}
+
+.leaflet-control-attribution a {
+  color: #6366f1 !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Map marker styles */
+.custom-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.custom-marker:hover {
+  transform: scale(1.2);
+  z-index: 1000 !important;
+}
+
+/* Sidebar transition */
+.sidebar-enter {
+  transform: translateX(-100%);
+}
+
+.sidebar-enter-active {
+  transform: translateX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+/* Input styles */
+input[type="text"],
+input[type="number"],
+input[type="url"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  border-radius: 6px;
+  padding: 8px 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--primary);
+}
+
+/* Category toggle */
+.category-toggle {
+  transition: all 0.2s;
+}
+
+.category-toggle:hover {
+  background: var(--card-hover);
+}
+
+/* Coordinate display */
+.coord-display {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 17, 23, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--muted);
+  z-index: 1000;
+  pointer-events: none;
+  font-family: monospace;
+}
