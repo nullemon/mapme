@@ -412,15 +412,56 @@ export default function MapEditorAdminPage({
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-1.5">
-                    Image URL
+                    Map Image
                   </label>
-                  <input
-                    type="url"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    className="w-full"
-                    placeholder="https://..."
-                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={imageUrl}
+                      onChange={(e) => setImageUrl(e.target.value)}
+                      className="flex-1"
+                      placeholder="/maps/my-map.png or https://..."
+                    />
+                    <label className="flex items-center gap-1.5 bg-primary hover:bg-primary-hover text-white px-3 py-2 rounded-md text-sm cursor-pointer transition-colors shrink-0">
+                      <FaUpload className="text-xs" />
+                      Upload
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const formData = new FormData();
+                          formData.append('file', file);
+                          setMessage('Uploading...');
+                          try {
+                            const res = await fetch('/api/upload', { method: 'POST', body: formData });
+                            const data = await res.json();
+                            if (res.ok) {
+                              setImageUrl(data.url);
+                              setMessage('Image uploaded!');
+                            } else {
+                              setMessage(data.error || 'Upload failed');
+                            }
+                          } catch {
+                            setMessage('Upload failed');
+                          }
+                        }}
+                      />
+                    </label>
+                  </div>
+                  {imageUrl && (
+                    <div className="mt-2 relative inline-block">
+                      <img src={imageUrl} alt="Map preview" className="h-24 rounded border border-border object-cover" />
+                      <button onClick={() => setImageUrl('')} className="absolute -top-1.5 -right-1.5 bg-danger text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">
+                        <FaTimes />
+                      </button>
+                    </div>
+                  )}
+                  <p className="text-xs text-muted mt-1">
+                    Upload a map image (PNG, JPG, WebP, SVG) or enter a URL. This displays as the map background.
+                  </p>
                 </div>
               </div>
               <div className="mt-4">
