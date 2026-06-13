@@ -121,13 +121,13 @@ db.prepare(`INSERT INTO games (id, name, slug, description, image_url) VALUES (?
 );
 
 const elwynnId = uuidv4();
-db.prepare(`INSERT INTO maps (id, game_id, name, slug, description, default_zoom, min_zoom, max_zoom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`).run(
-  elwynnId, wowId, "Elwynn Forest", "elwynn-forest", "The peaceful human starting zone surrounding Stormwind City.", 3, 1, 6
+db.prepare(`INSERT INTO maps (id, game_id, name, slug, description, default_zoom, min_zoom, max_zoom, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+  elwynnId, wowId, "Elwynn Forest", "elwynn-forest", "The peaceful human starting zone surrounding Stormwind City.", 3, 1, 6, "/maps/elwynn-forest.svg"
 );
 
 const azerothId = uuidv4();
-db.prepare(`INSERT INTO maps (id, game_id, name, slug, description, default_zoom, min_zoom, max_zoom) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`).run(
-  azerothId, wowId, "Eastern Kingdoms", "eastern-kingdoms", "The eastern continent of Azeroth.", 2, 1, 5
+db.prepare(`INSERT INTO maps (id, game_id, name, slug, description, default_zoom, min_zoom, max_zoom, image_url) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`).run(
+  azerothId, wowId, "Eastern Kingdoms", "eastern-kingdoms", "The eastern continent of Azeroth.", 2, 1, 5, "/maps/eastern-kingdoms.svg"
 );
 
 const pokemonMapId = uuidv4();

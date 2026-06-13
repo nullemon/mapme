@@ -1,0 +1,318 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-256 -256 512 512" width="2048" height="2048">
+  <defs>
+    <linearGradient id="parchment" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4b896"/>
+      <stop offset="30%" stop-color="#c8a882"/>
+      <stop offset="70%" stop-color="#d0b48e"/>
+      <stop offset="100%" stop-color="#c4a87a"/>
+    </linearGradient>
+    <linearGradient id="forest-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a7a2e"/>
+      <stop offset="100%" stop-color="#3a6a1e"/>
+    </linearGradient>
+    <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a8ab4"/>
+      <stop offset="100%" stop-color="#4a7aa4"/>
+    </linearGradient>
+    <linearGradient id="mountain-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a8478"/>
+      <stop offset="100%" stop-color="#6a6458"/>
+    </linearGradient>
+    <linearGradient id="field-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a8b468"/>
+      <stop offset="100%" stop-color="#98a458"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#9a8a6a"/>
+      <stop offset="100%" stop-color="#8a7a5a"/>
+    </linearGradient>
+    <filter id="paper-texture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="5" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="gray-noise"/>
+      <feBlend in="SourceGraphic" in2="gray-noise" mode="multiply"/>
+    </filter>
+    <filter id="glow">
+      <feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="text-shadow">
+      <feDropShadow dx="0.5" dy="0.5" stdDeviation="0.8" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <pattern id="tree-pattern" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+      <polygon points="12,2 8,10 16,10" fill="#3a6a1e" opacity="0.25"/>
+      <polygon points="0,14 -4,22 4,22" fill="#3a6a1e" opacity="0.2"/>
+      <polygon points="24,14 20,22 28,22" fill="#3a6a1e" opacity="0.2"/>
+    </pattern>
+    <pattern id="field-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="10" x2="20" y2="10" stroke="#8a9448" stroke-width="0.3" opacity="0.3"/>
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#8a9448" stroke-width="0.3" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Parchment background -->
+  <rect x="-256" y="-256" width="512" height="512" fill="url(#parchment)"/>
+  <rect x="-256" y="-256" width="512" height="512" fill="url(#parchment)" filter="url(#paper-texture)" opacity="0.9"/>
+
+  <!-- Decorative border -->
+  <rect x="-252" y="-252" width="504" height="504" fill="none" stroke="#6a5a3a" stroke-width="3" rx="5"/>
+  <rect x="-248" y="-248" width="496" height="496" fill="none" stroke="#8a7a5a" stroke-width="1" rx="4"/>
+  <!-- Corner ornaments -->
+  <g fill="#6a5a3a" opacity="0.6">
+    <circle cx="-248" cy="-248" r="4"/>
+    <circle cx="248" cy="-248" r="4"/>
+    <circle cx="-248" cy="248" r="4"/>
+    <circle cx="248" cy="248" r="4"/>
+  </g>
+
+  <!-- TERRAIN -->
+
+  <!-- Dense forest areas (multiple patches) -->
+  <g fill="url(#forest-fill)" opacity="0.35">
+    <!-- Northwest forest -->
+    <ellipse cx="-120" cy="-140" rx="80" ry="60" transform="rotate(-15,-120,-140)"/>
+    <!-- Northeast forest -->
+    <ellipse cx="100" cy="-100" rx="90" ry="55" transform="rotate(10,100,-100)"/>
+    <!-- Central forest -->
+    <ellipse cx="0" cy="-20" rx="100" ry="70"/>
+    <!-- Southeast forest -->
+    <ellipse cx="80" cy="80" rx="60" ry="50" transform="rotate(-10,80,80)"/>
+    <!-- Southwest forest -->
+    <ellipse cx="-100" cy="60" rx="70" ry="50"/>
+    <!-- South forest -->
+    <ellipse cx="0" cy="140" rx="90" ry="55"/>
+  </g>
+
+  <!-- Tree pattern overlay -->
+  <g opacity="0.3">
+    <ellipse cx="-120" cy="-140" rx="75" ry="55" fill="url(#tree-pattern)" transform="rotate(-15,-120,-140)"/>
+    <ellipse cx="100" cy="-100" rx="85" ry="50" fill="url(#tree-pattern)" transform="rotate(10,100,-100)"/>
+    <ellipse cx="0" cy="-20" rx="95" ry="65" fill="url(#tree-pattern)"/>
+    <ellipse cx="80" cy="80" rx="55" ry="45" fill="url(#tree-pattern)" transform="rotate(-10,80,80)"/>
+    <ellipse cx="-100" cy="60" rx="65" ry="45" fill="url(#tree-pattern)"/>
+    <ellipse cx="0" cy="140" rx="85" ry="50" fill="url(#tree-pattern)"/>
+  </g>
+
+  <!-- Individual tree clusters (scattered throughout) -->
+  <g fill="#3a6a1e" opacity="0.4">
+    <!-- Cluster 1 - near Northshire -->
+    <polygon points="-45,-35 -50,-25 -40,-25"/>
+    <polygon points="-35,-30 -40,-20 -30,-20"/>
+    <polygon points="-55,-28 -60,-18 -50,-18"/>
+    <!-- Cluster 2 - east -->
+    <polygon points="130,-50 125,-40 135,-40"/>
+    <polygon points="140,-55 135,-45 145,-45"/>
+    <polygon points="120,-45 115,-35 125,-35"/>
+    <!-- Cluster 3 - south -->
+    <polygon points="-20,170 -25,180 -15,180"/>
+    <polygon points="20,165 15,175 25,175"/>
+    <polygon points="-10,175 -15,185 -5,185"/>
+    <polygon points="30,172 25,182 35,182"/>
+    <!-- Cluster 4 - scattered -->
+    <polygon points="-150,-80 -155,-70 -145,-70"/>
+    <polygon points="160,20 155,30 165,30"/>
+    <polygon points="-80,130 -85,140 -75,140"/>
+    <polygon points="110,140 105,150 115,150"/>
+  </g>
+
+  <!-- Farm fields (south-central) -->
+  <g>
+    <rect x="-80" y="80" width="45" height="35" rx="3" fill="url(#field-fill)" opacity="0.4"/>
+    <rect x="-80" y="80" width="45" height="35" rx="3" fill="url(#field-pattern)" opacity="0.5"/>
+    <rect x="-30" y="100" width="40" height="30" rx="3" fill="url(#field-fill)" opacity="0.35"/>
+    <rect x="-30" y="100" width="40" height="30" rx="3" fill="url(#field-pattern)" opacity="0.5"/>
+    <rect x="40" y="130" width="50" height="35" rx="3" fill="url(#field-fill)" opacity="0.3"/>
+    <rect x="40" y="130" width="50" height="35" rx="3" fill="url(#field-pattern)" opacity="0.5"/>
+  </g>
+
+  <!-- Mountains (north edge and east edge) -->
+  <g fill="url(#mountain-fill)" stroke="#5a5448" stroke-width="0.8" opacity="0.7">
+    <!-- Northern mountains -->
+    <polygon points="-200,-245 -185,-210 -170,-245"/>
+    <polygon points="-175,-245 -158,-205 -140,-245"/>
+    <polygon points="-148,-245 -130,-208 -112,-245"/>
+    <polygon points="-120,-245 -100,-200 -80,-245"/>
+    <polygon points="-88,-245 -68,-205 -48,-245"/>
+    <polygon points="-55,-245 -35,-210 -15,-245"/>
+    <polygon points="-22,-245 -2,-202 18,-245"/>
+    <polygon points="12,-245 32,-208 52,-245"/>
+    <polygon points="45,-245 65,-200 85,-245"/>
+    <polygon points="78,-245 98,-205 118,-245"/>
+    <polygon points="112,-245 132,-210 152,-245"/>
+    <polygon points="145,-245 165,-198 185,-245"/>
+    <polygon points="178,-245 198,-208 218,-245"/>
+    <!-- Eastern mountains -->
+    <polygon points="245,-200 210,-185 245,-170"/>
+    <polygon points="245,-175 205,-158 245,-140"/>
+    <polygon points="245,-148 208,-130 245,-112"/>
+    <polygon points="245,-120 200,-100 245,-80"/>
+    <polygon points="245,-85 210,-68 245,-50"/>
+    <polygon points="245,-58 205,-38 245,-18"/>
+    <!-- Snow caps on tallest peaks -->
+    <polygon points="-120,-245 -110,-228 -100,-217 -90,-228 -80,-245" fill="#e0d8d0" stroke="none" opacity="0.5"/>
+    <polygon points="45,-245 55,-228 65,-215 75,-228 85,-245" fill="#e0d8d0" stroke="none" opacity="0.5"/>
+    <polygon points="145,-245 155,-228 165,-212 175,-228 185,-245" fill="#e0d8d0" stroke="none" opacity="0.5"/>
+  </g>
+
+  <!-- River (flowing NW to SE) -->
+  <path d="M-200,-180 C-170,-170 -150,-140 -120,-110 C-90,-80 -60,-60 -30,-30 C0,0 20,30 40,60 C60,90 80,110 120,140 C140,155 160,170 180,190 C195,205 210,220 230,240"
+    fill="none" stroke="url(#water)" stroke-width="8" opacity="0.7" stroke-linecap="round"/>
+  <path d="M-200,-180 C-170,-170 -150,-140 -120,-110 C-90,-80 -60,-60 -30,-30 C0,0 20,30 40,60 C60,90 80,110 120,140 C140,155 160,170 180,190 C195,205 210,220 230,240"
+    fill="none" stroke="#7aaad4" stroke-width="3" opacity="0.3" stroke-linecap="round"/>
+
+  <!-- Tributary stream -->
+  <path d="M100,-40 C80,-20 60,0 40,30 C30,45 35,55 40,60"
+    fill="none" stroke="url(#water)" stroke-width="4" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Crystal Lake -->
+  <ellipse cx="80" cy="120" rx="25" ry="18" fill="url(#water)" opacity="0.6"/>
+  <ellipse cx="80" cy="120" rx="22" ry="15" fill="#7aaad4" opacity="0.2"/>
+  <ellipse cx="78" cy="118" rx="8" ry="5" fill="#9abae4" opacity="0.15"/>
+
+  <!-- Stone Cairn Lake (small, northwest) -->
+  <ellipse cx="-140" cy="-60" rx="15" ry="12" fill="url(#water)" opacity="0.5"/>
+
+  <!-- ROADS -->
+  <g fill="none" stroke="#7a6a4a" stroke-width="3.5" opacity="0.6" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Main north-south road (from Stormwind gate to Goldshire) -->
+    <path d="M-160,-200 L-120,-160 L-80,-120 L-40,-80 L0,-40 L10,0 L15,20 L10,40"/>
+    <!-- Goldshire to Eastvale -->
+    <path d="M10,40 L40,35 L70,30 L100,25 L140,20"/>
+    <!-- Goldshire south road -->
+    <path d="M10,40 L5,70 L0,100 L-10,130 L-20,160"/>
+    <!-- Side road to Northshire Abbey -->
+    <path d="M-40,-80 L-20,-60 L-10,-50 L-10,-30"/>
+    <!-- Road to Westfall border -->
+    <path d="M5,70 L-30,85 L-60,95 L-100,110 L-140,130"/>
+    <!-- Road east to Redridge -->
+    <path d="M140,20 L170,30 L200,50 L230,70"/>
+  </g>
+
+  <!-- Road detail (center line) -->
+  <g fill="none" stroke="#9a8a6a" stroke-width="1" opacity="0.3" stroke-dasharray="6,4" stroke-linecap="round">
+    <path d="M-160,-200 L-120,-160 L-80,-120 L-40,-80 L0,-40 L10,0 L15,20 L10,40"/>
+    <path d="M10,40 L40,35 L70,30 L100,25 L140,20"/>
+    <path d="M10,40 L5,70 L0,100 L-10,130 L-20,160"/>
+  </g>
+
+  <!-- SETTLEMENTS -->
+
+  <!-- Stormwind entrance (northwest) -->
+  <g transform="translate(-160,-200)">
+    <rect x="-20" y="-15" width="40" height="30" rx="3" fill="#6a6a7a" opacity="0.5" stroke="#8a8a9a" stroke-width="1"/>
+    <rect x="-15" y="-10" width="10" height="8" rx="1" fill="#5a5a6a" opacity="0.6"/>
+    <rect x="5" y="-10" width="10" height="8" rx="1" fill="#5a5a6a" opacity="0.6"/>
+    <rect x="-5" y="2" width="10" height="10" rx="1" fill="#5a5a6a" opacity="0.6"/>
+    <!-- Gate towers -->
+    <rect x="-22" y="-8" width="6" height="16" rx="1" fill="#7a7a8a" opacity="0.6" stroke="#9a9aaa" stroke-width="0.5"/>
+    <rect x="16" y="-8" width="6" height="16" rx="1" fill="#7a7a8a" opacity="0.6" stroke="#9a9aaa" stroke-width="0.5"/>
+  </g>
+
+  <!-- Goldshire (center) -->
+  <g transform="translate(10,40)">
+    <rect x="-18" y="-12" width="36" height="24" rx="2" fill="#8a7a5a" opacity="0.3" stroke="#6a5a3a" stroke-width="0.8"/>
+    <!-- Inn -->
+    <rect x="-12" y="-8" width="10" height="8" rx="1" fill="#7a6a4a" opacity="0.5"/>
+    <polygon points="-7,-8 -12,-13 -2,-13" fill="#9a5a3a" opacity="0.5"/>
+    <!-- Blacksmith -->
+    <rect x="2" y="-6" width="8" height="7" rx="1" fill="#6a5a3a" opacity="0.5"/>
+    <!-- Stable -->
+    <rect x="-10" y="3" width="8" height="6" rx="1" fill="#6a5a3a" opacity="0.4"/>
+    <rect x="4" y="4" width="6" height="5" rx="1" fill="#6a5a3a" opacity="0.4"/>
+  </g>
+
+  <!-- Northshire Abbey (north-center) -->
+  <g transform="translate(-10,-30)">
+    <rect x="-12" y="-10" width="24" height="20" rx="2" fill="#8a8a7a" opacity="0.35" stroke="#6a6a5a" stroke-width="0.8"/>
+    <!-- Main abbey building -->
+    <rect x="-8" y="-6" width="16" height="12" rx="1" fill="#7a7a6a" opacity="0.5"/>
+    <polygon points="0,-6 -8,-14 8,-14" fill="#8a6a4a" opacity="0.4"/>
+    <!-- Bell tower -->
+    <rect x="-2" y="-18" width="4" height="12" rx="0.5" fill="#7a7a6a" opacity="0.5"/>
+    <polygon points="0,-18 -3,-22 3,-22" fill="#9a7a5a" opacity="0.5"/>
+  </g>
+
+  <!-- Eastvale Logging Camp (east) -->
+  <g transform="translate(140,20)">
+    <rect x="-15" y="-10" width="30" height="20" rx="2" fill="#7a6a4a" opacity="0.3" stroke="#5a4a2a" stroke-width="0.8"/>
+    <rect x="-10" y="-6" width="8" height="6" rx="1" fill="#6a5a3a" opacity="0.5"/>
+    <rect x="2" y="-5" width="7" height="5" rx="1" fill="#6a5a3a" opacity="0.4"/>
+    <rect x="-5" y="3" width="6" height="5" rx="1" fill="#6a5a3a" opacity="0.4"/>
+    <!-- Log piles -->
+    <g fill="#5a4a2a" opacity="0.4">
+      <ellipse cx="10" cy="5" rx="4" ry="2"/>
+      <ellipse cx="10" cy="3" rx="3.5" ry="1.5"/>
+    </g>
+  </g>
+
+  <!-- Westfall Border marker -->
+  <g transform="translate(-140,130)">
+    <line x1="-10" y1="-15" x2="-10" y2="15" stroke="#6a5a3a" stroke-width="2" opacity="0.4"/>
+    <line x1="10" y1="-15" x2="10" y2="15" stroke="#6a5a3a" stroke-width="2" opacity="0.4"/>
+    <line x1="-12" y1="-10" x2="12" y2="-10" stroke="#6a5a3a" stroke-width="1.5" opacity="0.4"/>
+  </g>
+
+  <!-- LABELS -->
+  <g font-family="serif" filter="url(#text-shadow)">
+    <!-- Main title -->
+    <text x="0" y="-195" font-size="24" font-weight="bold" fill="#3a5a1a" text-anchor="middle" letter-spacing="8" opacity="0.8">ELWYNN FOREST</text>
+    <text x="0" y="-178" font-size="8" fill="#5a7a3a" text-anchor="middle" letter-spacing="4" opacity="0.6">Kingdom of Stormwind</text>
+
+    <!-- Location labels -->
+    <text x="-160" y="-220" font-size="11" font-weight="bold" fill="#4a4a5a" text-anchor="middle" letter-spacing="1">Stormwind</text>
+    <text x="-160" y="-208" font-size="6" fill="#6a6a7a" text-anchor="middle" letter-spacing="1">City Gate</text>
+
+    <text x="10" y="65" font-size="10" font-weight="bold" fill="#4a3a1a" text-anchor="middle" letter-spacing="1">Goldshire</text>
+
+    <text x="-10" y="-42" font-size="8" font-weight="bold" fill="#4a4a3a" text-anchor="middle" letter-spacing="1">Northshire Abbey</text>
+
+    <text x="140" y="0" font-size="7" font-weight="bold" fill="#4a3a1a" text-anchor="middle" letter-spacing="1">Eastvale</text>
+    <text x="140" y="10" font-size="5" fill="#6a5a3a" text-anchor="middle" letter-spacing="1">Logging Camp</text>
+
+    <text x="80" y="145" font-size="8" font-style="italic" fill="#3a6a8a" text-anchor="middle" letter-spacing="1">Crystal Lake</text>
+
+    <text x="-140" y="150" font-size="7" fill="#6a5a3a" text-anchor="middle" letter-spacing="1">To Westfall</text>
+    <text x="-140" y="120" font-size="5" fill="#8a7a5a" text-anchor="middle">border</text>
+
+    <text x="230" y="60" font-size="6" fill="#6a5a3a" text-anchor="middle" letter-spacing="1">To Redridge</text>
+
+    <text x="-140" y="-55" font-size="6" font-style="italic" fill="#3a6a8a" text-anchor="middle">Stone Cairn</text>
+    <text x="-140" y="-46" font-size="6" font-style="italic" fill="#3a6a8a" text-anchor="middle">Lake</text>
+
+    <!-- Area labels (subtle, for forest regions) -->
+    <text x="-120" y="-130" font-size="7" fill="#3a5a1a" text-anchor="middle" letter-spacing="3" opacity="0.4" transform="rotate(-15,-120,-130)">DEEP WOODS</text>
+    <text x="100" y="-90" font-size="7" fill="#3a5a1a" text-anchor="middle" letter-spacing="3" opacity="0.4" transform="rotate(10,100,-90)">EASTERN WILDS</text>
+    <text x="-100" y="65" font-size="6" fill="#6a7a3a" text-anchor="middle" letter-spacing="2" opacity="0.4">FARMLANDS</text>
+    <text x="0" y="150" font-size="6" fill="#3a5a1a" text-anchor="middle" letter-spacing="2" opacity="0.4">SOUTHERN WOODS</text>
+  </g>
+
+  <!-- Compass rose (bottom-right corner) -->
+  <g transform="translate(210,210)">
+    <circle cx="0" cy="0" r="25" fill="none" stroke="#8a7a5a" stroke-width="0.8" opacity="0.5"/>
+    <circle cx="0" cy="0" r="22" fill="none" stroke="#8a7a5a" stroke-width="0.4" opacity="0.3"/>
+    <!-- N -->
+    <polygon points="0,-20 4,-7 0,-10 -4,-7" fill="#5a4a2a" opacity="0.8"/>
+    <!-- S -->
+    <polygon points="0,20 4,7 0,10 -4,7" fill="#8a7a5a" opacity="0.5"/>
+    <!-- E -->
+    <polygon points="20,0 7,4 10,0 7,-4" fill="#8a7a5a" opacity="0.5"/>
+    <!-- W -->
+    <polygon points="-20,0 -7,4 -10,0 -7,-4" fill="#8a7a5a" opacity="0.5"/>
+    <!-- Diagonals -->
+    <line x1="-14" y1="-14" x2="14" y2="14" stroke="#8a7a5a" stroke-width="0.3" opacity="0.3"/>
+    <line x1="14" y1="-14" x2="-14" y2="14" stroke="#8a7a5a" stroke-width="0.3" opacity="0.3"/>
+    <!-- Labels -->
+    <text x="0" y="-27" font-family="serif" font-size="7" fill="#5a4a2a" text-anchor="middle" font-weight="bold">N</text>
+    <text x="0" y="33" font-family="serif" font-size="5" fill="#8a7a5a" text-anchor="middle">S</text>
+    <text x="-28" y="2" font-family="serif" font-size="5" fill="#8a7a5a" text-anchor="middle">W</text>
+    <text x="28" y="2" font-family="serif" font-size="5" fill="#8a7a5a" text-anchor="middle">E</text>
+  </g>
+
+  <!-- Map legend hint (bottom-left) -->
+  <g transform="translate(-220,220)" font-family="serif" font-size="5" fill="#6a5a3a" opacity="0.5">
+    <text x="0" y="0">Scale: approximate</text>
+    <text x="0" y="8">Coordinates: game world</text>
+    <line x1="0" y1="14" x2="30" y2="14" stroke="#6a5a3a" stroke-width="1"/>
+    <line x1="0" y1="12" x2="0" y2="16" stroke="#6a5a3a" stroke-width="1"/>
+    <line x1="30" y1="12" x2="30" y2="16" stroke="#6a5a3a" stroke-width="1"/>
+    <text x="15" y="22" text-anchor="middle">~100 yards</text>
+  </g>
+</svg>

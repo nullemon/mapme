@@ -5,6 +5,7 @@ import L from 'leaflet';
 import {
   MapContainer,
   TileLayer,
+  ImageOverlay,
   Marker,
   Popup,
   Polyline,
@@ -189,7 +190,7 @@ export default function MapView({
         className="h-full w-full"
         style={{ background: '#1a1a2e' }}
       >
-        {/* Tiles or plain background */}
+        {/* Map background: tiles, image overlay, or plain */}
         {mapData.tile_url ? (
           <TileLayer
             url={mapData.tile_url}
@@ -197,17 +198,12 @@ export default function MapView({
             minZoom={mapData.min_zoom ?? 1}
             bounds={bounds}
           />
-        ) : (
-          <TileLayer
-            url=""
-            maxZoom={mapData.max_zoom ?? 18}
-            minZoom={mapData.min_zoom ?? 1}
-            /* Plain colored background when no tile URL is set.
-               We use a transparent data URI so Leaflet doesn't request
-               real tiles, while the container background color shows through. */
-            tileSize={256}
+        ) : mapData.image_url && bounds ? (
+          <ImageOverlay
+            url={mapData.image_url}
+            bounds={bounds}
           />
-        )}
+        ) : null}
 
         {/* POI markers */}
         {visiblePois.map((poi) => {
