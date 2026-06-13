@@ -92,6 +92,16 @@ db.exec(`
   );
 `);
 
+// Clear existing data for a clean reseed
+db.exec(`
+  DELETE FROM routes;
+  DELETE FROM pois;
+  DELETE FROM data_tables;
+  DELETE FROM categories;
+  DELETE FROM maps;
+  DELETE FROM games;
+`);
+
 const wowId = uuidv4();
 db.prepare(`INSERT INTO games (id, name, slug, description, image_url) VALUES (?, ?, ?, ?, ?)`).run(
   wowId,
